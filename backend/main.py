@@ -35,6 +35,12 @@ class Task(TaskBase):
 class TaskUpdateStatus(BaseModel):
     status: str
 
+class TaskEdit(BaseModel):
+    title: str
+    due_date: datetime
+    priority: str
+    status: str
+
 def read_tasks():
     with open(DATA_FILE, "r") as f:
         content = f.read().strip()
@@ -63,13 +69,15 @@ def create_task(task: TaskCreate):
     return task_data
 
 @app.put("/tasks/{task_id}", response_model=Task)
-def update_task(task_id: int, updated: TaskUpdateStatus):
+def update_task(task_id: int, updated: TaskEdit):
     tasks = read_tasks()
     for i, t in enumerate(tasks):
         if t["id"] == task_id:
-            t["status"] = updated.status
+            updated_data = updated.dict()
+            updated_data["id"] = task_id  # conservar el ID original
+            tasks[i] = updated_data
             write_tasks(tasks)
-            return t
+            return updated_data
     raise HTTPException(status_code=404, detail="Tarea no encontrada")
 
 @app.delete("/tasks/{task_id}")
