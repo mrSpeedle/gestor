@@ -27,7 +27,7 @@ function App() {
     );
 
   return (
-    <div className="min-h-screen pb-16 bg-gray-100"> {/* pb-16 da espacio al footer */}
+    <div className="min-h-screen pb-16 bg-gray-100"> {}
       <Header />
       <div className="max-w-2xl mx-auto bg-white shadow-md rounded-lg p-6 mt-4">
         <TaskForm onCreated={() => listRef.current?.reload()} />

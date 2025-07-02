@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .tile-high {
+    @apply bg-red-200 rounded-full text-red-800 text-xs;
+  }
+  .tile-medium {
+    @apply bg-yellow-200 rounded-full text-yellow-800 text-xs;
+  }
+  .tile-low {
+    @apply bg-green-200 rounded-full text-green-800 text-xs;
+  }
+}

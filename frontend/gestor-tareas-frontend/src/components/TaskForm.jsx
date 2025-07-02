@@ -27,50 +27,69 @@ export default function TaskForm({ onCreated }) {
     try {
       await createTask({ ...form, status: "pendiente" });
       setForm({ title: "", due_date: "", priority: "media" });
-      onCreated(); // avisar al padre de la nueva tarea
+      onCreated(); 
     } catch (err) {
       setError(err.message || "Error al crear tarea");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-50 p-4 rounded shadow mb-6">
-      {error && <div className="text-red-600 mb-2">{error}</div>}
-      <div className="mb-3">
-        <label className="block font-semibold">Título</label>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded-lg px-6 py-4 mb-6"
+    >
+      {error && (
+        <div className="text-red-600 bg-red-100 p-2 rounded mb-4">
+          {error}
+        </div>
+      )}
+
+      {/* Título */}
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-1">Título</label>
         <input
           name="title"
           value={form.title}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
           required
         />
       </div>
-      <div className="mb-3">
-        <label className="block font-semibold">Fecha</label>
+
+      {/* Fecha */}
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-1">Fecha</label>
         <input
           type="date"
           name="due_date"
           value={form.due_date}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
           required
         />
       </div>
-      <div className="mb-3">
-        <label className="block font-semibold">Prioridad</label>
+
+      {/* Prioridad */}
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-1">
+          Prioridad
+        </label>
         <select
           name="priority"
           value={form.priority}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
         >
           <option value="alta">Alta</option>
           <option value="media">Media</option>
           <option value="baja">Baja</option>
         </select>
       </div>
-      <button type="submit" className="bg-blue-600 text-white rounded px-4 py-2">
+
+      <button
+        type="submit"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow"
+      >
         Crear tarea
       </button>
     </form>
