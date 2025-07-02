@@ -14,20 +14,24 @@ export async function createTask(task) {
   return res.json();
 }
 
-// ✅ Marcar como completada
-export async function updateTaskStatus(id, status) {
-  const res = await fetch(`${API_URL}/tasks/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ status }),
-  });
-  return res.json();
-}
 
 // ✅ Eliminar tarea
 export async function deleteTask(id) {
   const res = await fetch(`${API_URL}/tasks/${id}`, {
     method: "DELETE",
   });
+  return res.json();
+}
+
+export async function updateTask(id, task) {
+  const res = await fetch(`${API_URL}/tasks/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(task),
+  });
+  if (!res.ok) {
+    const errorDetail = await res.text();
+    throw new Error("Error actualizando tarea: " + errorDetail);
+  }
   return res.json();
 }
