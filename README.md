@@ -6,9 +6,9 @@ Una aplicación web para crear, editar, eliminar y visualizar tareas personales.
 ## 🚀 Demo
 
 - Pantalla de inicio con formulario:
-  ![Pantalla principal](frontend/gestor-tareas-frontend/assets/screenshots/form.png)
+  ![Pantalla principal](frontend/gestor-tareas-frontend/src/assets/screenshots/form.png)
 - Calendario responsivo con indicadores:
-  ![Calendario](frontend/gestor-tareas-frontend/assets/screenshots/calendar.png)
+  ![Calendario](frontend/gestor-tareas-frontend/src/assets/screenshots/calendar.png)
 
 
 ## ⚙️ Tecnologías
