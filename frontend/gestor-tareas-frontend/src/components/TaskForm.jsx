@@ -27,7 +27,7 @@ export default function TaskForm({ onCreated }) {
     try {
       await createTask({ ...form, status: "pendiente" });
       setForm({ title: "", due_date: "", priority: "media" });
-      onCreated(); 
+      onCreated();
     } catch (err) {
       setError(err.message || "Error al crear tarea");
     }
@@ -36,12 +36,10 @@ export default function TaskForm({ onCreated }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded-lg px-6 py-4 mb-6"
+      className="bg-white shadow-md rounded-lg px-6 py-4 mb-6 w-full max-w-lg mx-auto"
     >
       {error && (
-        <div className="text-red-600 bg-red-100 p-2 rounded mb-4">
-          {error}
-        </div>
+        <div className="text-red-600 bg-red-100 p-2 rounded mb-4">{error}</div>
       )}
 
       {/* Título */}
@@ -88,7 +86,7 @@ export default function TaskForm({ onCreated }) {
 
       <button
         type="submit"
-        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow"
+        className="bg-[#0e0533] hover:bg-[#0c0430] text-white font-semibold px-4 py-2 rounded-md shadow mx-auto block"
       >
         Crear tarea
       </button>
